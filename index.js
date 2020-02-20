@@ -16,7 +16,7 @@ cron.schedule('0 6-21 * * *', async () => {
 async function start() {
 
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({args: ['--no-sandbox']});
         const page = await browser.newPage();
 
         await page.goto('https://www.instagram.com/accounts/login/?source=auth_switcher');
