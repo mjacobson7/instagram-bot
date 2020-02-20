@@ -39,7 +39,7 @@ async function start() {
 
 
 
-        const messages = ['Would love to win this!', 'Love it!', 'Looks great!', '*Fingers Crossed*', 'I hope I win!'];
+        const messages = ['Would love to win this!', 'Love it!', 'Looks great!', '*Fingers Crossed*', 'I hope I win!', 'Me likey', 'I want this!', 'Ooooohhhh, I love it.', 'I <3 this', 'I could use this'];
         for (let i = 0; i < 10; i++) {
             await enterContests(page, messages[i]);
         }
@@ -65,31 +65,30 @@ async function enterContests(page, message) {
     if (isFollowing.includes('Following')) {
         // Next contest
         await page.click("body > div._2dDPU.vCf6V > div.EfHg9 > div > div > a")
-        await page.waitFor(200)
+        await page.waitFor(2000)
         return enterContests(page, message);
     }
     //Follow
     await page.click("body > div._2dDPU.vCf6V > div.zZYga > div > article > header > div.o-MQd.z8cbW > div.PQo_0.RqtMr > div.bY2yH > button")
-    await page.waitFor(200)
+    await page.waitFor(2000)
 
     //Like
     await page.waitForSelector("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.ltpMr.Slqrh > span.fr66n > button")
     await page.click("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.ltpMr.Slqrh > span.fr66n > button")
-    await page.waitFor(200)
-
+    await page.waitFor(2000)
 
     //Save
     await page.click("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.ltpMr.Slqrh > span.wmtNn > button")
-    await page.waitFor(200)
+    await page.waitFor(2000)
 
     //Comment
     if (await page.$("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.sH9wk._JgwE > div > form > textarea") !== null) {
         await page.type("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.sH9wk._JgwE > div > form > textarea", message)
         await page.click("body > div._2dDPU.vCf6V > div.zZYga > div > article > div.eo2As > section.sH9wk._JgwE > div > form > button")
-        await page.waitFor(200)
+        await page.waitFor(2000)
     }
 
     // Next contest
     await page.click("body > div._2dDPU.vCf6V > div.EfHg9 > div > div > a")
-    await page.waitFor(200)
+    await page.waitFor(2000)
 }
